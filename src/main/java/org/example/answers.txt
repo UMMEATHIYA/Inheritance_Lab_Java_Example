@@ -1,0 +1,44 @@
+Question1
+1. a. How does inheritance reduce code duplication here?
+      Ans: Inheritance allows shared fields and methods to be defined once in a base (super) class,
+           so they don’t have to be rewritten in every subclass.
+           It promotes code reuse, cleaner design, and easier maintenance.
+
+
+1. b. What does the super keyword do? Why must it be called first?
+      Ans: The super keyword refers to the parent class (i.e., the class being extended). You use it to:
+           It allows access the parent class's constructor.
+           It also calls parent class methods or fields from within the subclass.
+           Java needs to initialize the parent class first, before the child class.
+           The superclass constructor sets up its part of the object (like make and year), and must complete before
+           the subclass can initialize its own fields.
+
+
+Question 2:-
+What is the problem with this? How can you fix it using interface segregation? For example, add
+interface for both Vehicle and Honk. (Assume this is an old bike and doesn’t have a honk and
+only has a bell).
+
+Ans:- The problem arises when a honk() method is added to the Vehicle base class,
+forcing all subclasses—including those that shouldn't honk, like an old Bicycle—to inherit it.
+This violates the Interface Segregation Principle by making classes depend on methods they don’t need.
+To fix this, we can separate responsibilities using interfaces: create an IVehicle interface for shared
+behaviors like startEngine() and stopEngine(), and a separate IHonkable interface for vehicles that can
+honk. This way, only classes like Car and Motorcycle implement IHonkable, while
+Bicycle avoids irrelevant behavior and can instead define a ringBell() method, keeping the design clean and modular.
+
+
+Question 3: -
+
+3. a. The diamond problem occurs in languages that support multiple inheritance, like C++, where a class can inherit
+      from more than one class.
+      Java avoids the diamond problem by not supporting multiple inheritance of classes. Instead, it uses interfaces,
+      which don’t carry state and avoid this conflict.
+
+3. b. The Problem is super class only has a parameterized constructor and SubClass1 does not call super(state)
+      explicitly, so Java tries to call a default constructor super(), which doesn't exist.
+      So the fix is that you must explicitly call the superclass constructor.
+
+
+
+
